@@ -13,3 +13,5 @@ So we have a dataset that will be used to training and testing the model.
 
 The training data is used to calculate the predictions of the model and the slope. 
 The testing data is used to test the model accuracy.
+
+Common slipping is to use 80% of dataset for training and 20% for testing.
