@@ -227,13 +227,13 @@ function SimpleRegression() {
             <div className="chart-container">
               <ResponsiveContainer width="100%" height={360}>
                 <ComposedChart data={chartData()} margin={{ top: 10, right: 30, left: 20, bottom: 10 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="var(--chart-grid)" />
                   <XAxis
                     dataKey="x"
                     type="number"
                     domain={[0, 'dataMax']}
-                    label={{ value: 'X', position: 'insideBottomRight', offset: -5 }}
-                    tick={{ fontSize: 12 }}
+                    label={{ value: 'x', position: 'insideBottom', offset: -5, fill: 'var(--text-secondary)' }}
+                    tick={{ fontSize: 12, fill: 'var(--text-secondary)' }}
                     allowDecimals={false}
                     allowDataOverflow
                     interval={0}
@@ -253,8 +253,8 @@ function SimpleRegression() {
                       (min: number) => min >= 0 ? 0 : Math.floor(min * 1.1),
                       (max: number) => Math.ceil(max),
                     ]}
-                    label={{ value: 'Y', angle: -90, position: 'insideLeft', offset: -5 }}
-                    tick={{ fontSize: 12 }}
+                    label={{ value: 'y', angle: 0, position: 'insideLeft', fill: 'var(--text-secondary)' }}
+                    tick={{ fontSize: 12, fill: 'var(--text-secondary)' }}
                     allowDecimals={false}
                     interval={0}
                     ticks={(() => {
@@ -273,20 +273,33 @@ function SimpleRegression() {
                     })()}
                   />
                   <Tooltip
-                    formatter={(val) => fmt(Number(val), 2)}
-                    labelFormatter={(val) => `X: ${val}`}
+                    content={({ active, payload }) => {
+                      if (!active || !payload?.length) return null;
+                      const data = payload[0]?.payload;
+                      if (!data) return null;
+                      const x = fmt(data.x, 2);
+                      const y = data.y != null ? fmt(data.y, 2) : null;
+                      const predicted = data.lineY != null ? fmt(data.lineY, 2) : null;
+                      return (
+                        <div style={{ background: 'var(--bg-tooltip)', border: '1px solid var(--border)', borderRadius: 8, padding: '8px 12px', fontSize: 13, color: 'var(--text-primary)' }}>
+                          <div style={{ fontWeight: 600, marginBottom: 4 }}>x = {x}</div>
+                          {y != null && <div style={{ color: 'var(--accent)' }}>Actual y = {y}</div>}
+                          {predicted != null && <div style={{ color: '#ef4444' }}>Predicted y = {predicted}</div>}
+                        </div>
+                      );
+                    }}
                   />
                   <Scatter
                     name="Data Points"
                     dataKey="y"
-                    fill="#4f46e5"
-                    r={5}
+                    fill="var(--chart-scatter)"
+                    r={6}
                   />
                   <Line
                     name="Regression Line"
                     dataKey="lineY"
-                    stroke="#ef4444"
-                    strokeWidth={2}
+                    stroke="var(--chart-line)"
+                    strokeWidth={2.5}
                     dot={false}
                     connectNulls
                     type="linear"
@@ -301,7 +314,7 @@ function SimpleRegression() {
             <h2>Predict</h2>
             <div className="predict-section">
               <div className="field">
-                <label>X Value</label>
+                <label>x value</label>
                 <input
                   type="number"
                   value={predictX}
@@ -319,7 +332,7 @@ function SimpleRegression() {
             </div>
             {predictResult !== null && (
               <div className="predict-result">
-                Predicted Y: {fmt(predictResult, 2)}
+                predicted y = {fmt(predictResult, 2)}
               </div>
             )}
           </div>
