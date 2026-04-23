@@ -132,11 +132,11 @@ double[] y = {150, 200, 230, 300, 350};
 
 var model = LinearRegression.fit(x, y);
 
-model.slope();       // 2.86
-model.intercept();   // 7.00
-model.predict(90);   // 264.43
-model.rSquared(x, y); // 0.9975
-model.mse(x, y);     // 20.91
+model.slope();       // 2.9384
+model.intercept();   // -0.8219
+model.predict(90);   // 263.63
+model.rSquared(x, y); // 0.9957
+model.mse(x, y);     // 21.78
 ```
 
 ---
