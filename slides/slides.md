@@ -67,15 +67,18 @@ $$\underbrace{m}_{\text{slope}} = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar
 
 ---
 
+<style scoped>
+section { font-size: 22px; padding: 40px 60px; }
+section p { margin: 8px 0; }
+table { font-size: 18px; margin: 8px auto; }
+h2 { margin-bottom: 12px; }
+</style>
+
 ## Worked Example
 
 **Step 1 — compute the means** ($\bar{x}$, $\bar{y}$ are the averages of x and y):
 
-$$\bar{x} = \frac{50+70+80+100+120}{5} = 84 \qquad \bar{y} = \frac{150+200+230+300+350}{5} = 246$$
-
-<style scoped>
-table { font-size: 20px; }
-</style>
+$\bar{x} = (50+70+80+100+120)/5 = 84 \qquad \bar{y} = (150+200+230+300+350)/5 = 246$
 
 **Step 2 — build the sums:**
 
@@ -88,7 +91,9 @@ table { font-size: 20px; }
 |   | 120   |  350  |       36        |       104       |            3,744             |       1,296       |
 | **Σ** |   |   |                 |                 |          **8,580**           |     **2,920**     |
 
-$$m = \frac{8{,}580}{2{,}920} \approx 2.94 \qquad b = 246 - 2.94 \times 84 \approx -0.82$$
+**Step 3 — plug into the formulas:**
+
+$m = 8{,}580 \,/\, 2{,}920 \approx 2.94 \qquad b = 246 - 2.94 \times 84 \approx -0.82$
 
 ---
 
