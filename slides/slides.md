@@ -40,7 +40,7 @@ style: |
 
 <div class="formula">
 
-$y = mx + b$
+$y = m \cdot x + b$
 
 </div>
 
@@ -64,7 +64,9 @@ $y = mx + b$
 |     100       |   300,000   |
 |     120       |   350,000   |
 
-The model learns $price = b + m \cdot sqm$, then predicts any new size.
+The model learns:
+
+$$\underbrace{price}_{y} = m \cdot \underbrace{sqm}_{x} + b$$
 
 <span class="small">Other applications: sales forecasting, crop yield estimation, stock trends.</span>
 
@@ -76,7 +78,7 @@ The model learns $price = b + m \cdot sqm$, then predicts any new size.
 
 <br>
 
-$$\underbrace{m}_{\text{slope}} = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n}(x_i - \bar{x})^2} \qquad \underbrace{b}_{\text{intercept}} = \bar{y} - m\bar{x}$$
+$$\underbrace{m}_{\text{slope}} = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n}(x_i - \bar{x})^2} \qquad \underbrace{b}_{\text{intercept}} = \bar{y} - m \cdot \bar{x}$$
 
 <br>
 
