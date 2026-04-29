@@ -1,0 +1,52 @@
+<svg viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#e8e8e8" stroke-width="1">
+    <line x1="40" y1="167.8" x2="340" y2="167.8"/>
+    <line x1="40" y1="125.6" x2="340" y2="125.6"/>
+    <line x1="40" y1="83.3" x2="340" y2="83.3"/>
+    <line x1="40" y1="41.1" x2="340" y2="41.1"/>
+  </g>
+
+  <line x1="40" y1="210" x2="340" y2="210" stroke="#333" stroke-width="1.5"/>
+  <line x1="40" y1="20" x2="40" y2="210" stroke="#333" stroke-width="1.5"/>
+
+  <g font-size="10" fill="#555" text-anchor="middle">
+    <text x="40" y="226">0</text>
+    <text x="140" y="226">50</text>
+    <text x="240" y="226">100</text>
+    <text x="340" y="226">150</text>
+  </g>
+  <g stroke="#333" stroke-width="1.5">
+    <line x1="40" y1="210" x2="40" y2="214"/>
+    <line x1="140" y1="210" x2="140" y2="214"/>
+    <line x1="240" y1="210" x2="240" y2="214"/>
+    <line x1="340" y1="210" x2="340" y2="214"/>
+  </g>
+
+  <g font-size="10" fill="#555" text-anchor="end">
+    <text x="35" y="213">0</text>
+    <text x="35" y="171">100</text>
+    <text x="35" y="129">200</text>
+    <text x="35" y="86">300</text>
+    <text x="35" y="44">400</text>
+  </g>
+  <g stroke="#333" stroke-width="1.5">
+    <line x1="36" y1="210" x2="40" y2="210"/>
+    <line x1="36" y1="167.8" x2="40" y2="167.8"/>
+    <line x1="36" y1="125.6" x2="40" y2="125.6"/>
+    <line x1="36" y1="83.3" x2="40" y2="83.3"/>
+    <line x1="36" y1="41.1" x2="40" y2="41.1"/>
+  </g>
+
+  <text x="346" y="214" font-size="13" font-style="italic" fill="#333">x</text>
+  <text x="32" y="18" font-size="13" font-style="italic" fill="#333" text-anchor="end">y</text>
+
+  <line x1="40" y1="210" x2="340" y2="24" stroke="#2c5282" stroke-width="2.5"/>
+
+  <g fill="#1a365d" stroke="white" stroke-width="1.5">
+    <circle cx="140" cy="147" r="5.5"/>
+    <circle cx="180" cy="126" r="5.5"/>
+    <circle cx="200" cy="113" r="5.5"/>
+    <circle cx="240" cy="83" r="5.5"/>
+    <circle cx="280" cy="62" r="5.5"/>
+  </g>
+</svg>

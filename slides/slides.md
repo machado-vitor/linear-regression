@@ -34,6 +34,8 @@ style: |
 <!-- _class: lead -->
 <!-- _paginate: false -->
 
+![bg right:42% w:85%](regression.svg)
+
 # Linear Regression
 
 ### Fit a straight line. Predict a number.
