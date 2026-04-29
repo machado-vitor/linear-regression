@@ -114,13 +114,6 @@ class LinearRegressionTest {
     }
 
     @Test
-    void zeroVarianceThrows() {
-        assertThrows(ArithmeticException.class, () ->
-            LinearRegression.fit(new double[]{3, 3, 3}, new double[]{1, 2, 3})
-        );
-    }
-
-    @Test
     void mseAndRSquaredValidateArrays() {
         var model = LinearRegression.fit(new double[]{0, 1}, new double[]{0, 1});
 

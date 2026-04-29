@@ -52,6 +52,24 @@ $y = mx + b$
 
 ---
 
+## Use Case — Real Estate Pricing
+
+**Problem:** predict house price from square meters.
+
+| Square Meters | Price (USD) |
+|:-------------:|:-----------:|
+|      50       |   150,000   |
+|      70       |   200,000   |
+|      80       |   230,000   |
+|     100       |   300,000   |
+|     120       |   350,000   |
+
+The model learns $price = b + m \cdot sqm$, then predicts any new size.
+
+<span class="small">Other applications: sales forecasting, crop yield estimation, stock trends.</span>
+
+---
+
 ## Finding the line
 
 **Goal:** pick $m$ (slope) and $b$ (intercept) that minimize the sum of squared errors.
@@ -97,6 +115,32 @@ $m = 8{,}580 \,/\, 2{,}920 \approx 2.94 \qquad b = 246 - 2.94 \times 84 \approx 
 
 ---
 
+## Code Walkthrough
+
+<style scoped>
+section { font-size: 22px; padding: 40px 60px; }
+pre { font-size: 18px; line-height: 1.35; }
+</style>
+
+```java
+double meanX = sumX / sampleCount;
+double meanY = sumY / sampleCount;
+
+double covariance = 0, variance = 0;
+for (int i = 0; i < sampleCount; i++) {
+    double xDeviation = x[i] - meanX;            // (x_i - x̄)
+    covariance += xDeviation * (y[i] - meanY);
+    variance  += xDeviation * xDeviation;
+}
+
+double slope     = covariance / variance;        // covariance(x,y) / variance(x)
+double intercept = meanY - slope * meanX;        // anchor through (x̄, ȳ)
+```
+
+<span class="small">The formulas from slide 3 → these 10 lines.</span>
+
+---
+
 ## Evaluating the fit
 
 $$MSE = \frac{1}{n}\sum_{i=1}^{n}(\hat{y}_i - y_i)^2$$
@@ -123,8 +167,6 @@ $$R^2 = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar{y})^2}$$
 
 - **Interpretable by design** — each coefficient has a literal meaning; required in regulated domains
 - **Trains in milliseconds** — closed-form solution, no GPU, millions of rows on a laptop
-- **Cheap to serve** — model is a handful of floats; inference is one dot product
-- **Statistical inference for free** — p-values, confidence intervals, standard errors per coefficient
 - **The baseline everything must beat** — if a complex model barely wins, the complexity isn't justified
 
 ---
@@ -133,35 +175,7 @@ $$R^2 = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar{y})^2}$$
 
 - **Assumes a linear relationship** — if the truth curves, the bias is structural; no amount of data fixes it
 - **Outliers dominate the fit** — squared loss lets one extreme point pull the entire line
-- **Multicollinearity breaks interpretation** — correlated features make coefficients unstable and flip signs
 - **Extrapolation fails silently** — predicts confidently far outside the training range, with no warning
-- **Inference has strings attached** — p-values and CIs assume independent, normal, homoscedastic errors
-
----
-
-## Use Case — Real Estate Pricing
-
-**Problem:** predict house price from square meters.
-
-| Square Meters | Price (USD) |
-|:-------------:|:-----------:|
-|      50       |   150,000   |
-|      70       |   200,000   |
-|      80       |   230,000   |
-|     100       |   300,000   |
-|     120       |   350,000   |
-
-The model learns $price = b + m \cdot sqm$, then predicts any new size.
-
-<span class="small">Other applications: sales forecasting, crop yield estimation, stock trends.</span>
-
----
-
-<!-- _class: lead -->
-
-# Code Walkthrough
-
-### `LinearRegression.fit` — ~20 lines, no libraries
 
 ---
 
